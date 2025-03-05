@@ -15,7 +15,7 @@ body{
 
 .contenedor{
     max-width:80%;
-    width: 1300px ;
+    width: 800px ;
     display: grid;
     align-content: center;
     justify-items: center;

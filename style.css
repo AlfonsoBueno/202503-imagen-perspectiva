@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box ;
+}
+
+body{
+    background-color: #fff;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+}
+
+.contenedor{
+    max-width:80%;
+    width: 1300px ;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    grid-template-columns: repeat(8,1fr);
+    grid-gap: 10px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.imagen{
+        position: relative;
+        display: block;
+        overflow: hidden;
+        /* max-height: 240px; */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,.5);
+        transition: all 0.5s;
+        filter: grayscale(100%);
+        cursor: pointer;
+        
+        img{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block; /* Solución aquí */
+        }
+
+        &:hover{
+            transform: translateZ(200px);        
+            filter: none;
+        }        
+        
+        &:hover + *{
+            transform: translateZ(140px) rotateY(30deg);
+            filter: grayscale(60%);
+        }      
+        
+        &:hover + * + *{
+            transform: translateZ(60px) rotateY(10deg); 
+            filter: grayscale(30%);
+        }    
+
+                
+        &:has(+ *:hover){
+            transform: translateZ(140px) rotateY(-30deg); 
+            filter: grayscale(6%); 
+        }       
+    
+        &:has(+ * + *:hover){
+            transform: translateZ(60px) rotateY(-10deg); 
+            filter: grayscale(30%); 
+        }      
+
+    }
